@@ -10,109 +10,243 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
-<meta name="theme-color" content="#070b13">
+<meta name="theme-color" content="#050d19">
 
-<title>TIA – Persönlicher KI-Assistent</title>
+<title>TIA – Personal AI</title>
 
 <style>
 
-*{box-sizing:border-box}
+* { box-sizing: border-box; }
 
-body{
+body {
 
- margin:0;background:#070b13;color:#eaf4ff;
+  margin: 0;
 
- font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+  background: radial-gradient(circle at top,#123653,#050b14 70%);
 
- min-height:100vh;display:flex;flex-direction:column;
+  color: #e8f7ff;
 
-}
+  font-family: Arial, sans-serif;
 
-header{
-
- padding:20px;text-align:center;border-bottom:1px solid #1c3854;
-
- letter-spacing:5px;color:#9bdcff;font-size:23px;
+  min-height: 100vh;
 
 }
 
-main{flex:1;display:flex;flex-direction:column;align-items:center;padding:25px 16px}
+header {
 
-.orb{
+  text-align: center;
 
- width:155px;height:155px;border-radius:50%;margin:30px auto;
+  padding: 28px 15px;
 
- border:2px solid #55bfff;
-
- box-shadow:0 0 25px #168bdb, inset 0 0 25px #168bdb;
-
- display:flex;align-items:center;justify-content:center;
-
- color:#bceaff;font-size:32px;letter-spacing:4px;
-
- animation:pulse 3s infinite ease-in-out;
+  border-bottom: 1px solid #17618b;
 
 }
 
-@keyframes pulse{
+.logo {
 
- 50%{box-shadow:0 0 45px #168bdb,inset 0 0 35px #168bdb;transform:scale(1.04)}
+  width: 90px;
 
-}
+  height: 90px;
 
-#status{color:#78bde8;font-size:13px;letter-spacing:2px}
+  margin: auto;
 
-#chat{
+  border: 2px solid #4acaff;
 
- width:100%;max-width:650px;flex:1;min-height:180px;
+  border-radius: 50%;
 
- margin-top:25px;display:flex;flex-direction:column;gap:12px;
+  display: grid;
 
-}
+  place-items: center;
 
-.message{
+  font-size: 52px;
 
- padding:13px 15px;border:1px solid #244766;
+  color: #7ce0ff;
 
- border-radius:12px;background:#0d1928;line-height:1.5;
-
- overflow-wrap:anywhere;
+  box-shadow: 0 0 30px #168dcc;
 
 }
 
-.user{align-self:flex-end;background:#102b43}
+h1 {
 
-.assistant{align-self:flex-start}
+  letter-spacing: 9px;
 
-.controls{
-
- width:100%;max-width:650px;display:flex;gap:8px;
-
- padding:14px 0 25px;
+  color: #70d9ff;
 
 }
 
-input{
+.status {
 
- flex:1;min-width:0;background:#101c2b;color:white;
+  color: #48e6a0;
 
- border:1px solid #315575;border-radius:12px;padding:14px;
+  font-size: 12px;
 
- font-size:16px;outline:none;
-
-}
-
-button{
-
- background:#123b5b;color:#dff5ff;border:1px solid #398bc0;
-
- border-radius:12px;padding:12px 15px;font-size:16px;
+  letter-spacing: 2px;
 
 }
 
-button:active{background:#1c608b}
+main {
 
-footer{text-align:center;color:#61788d;font-size:11px;padding:12px}
+  max-width: 650px;
+
+  margin: auto;
+
+  padding: 18px;
+
+}
+
+.welcome {
+
+  text-align: center;
+
+  padding: 20px;
+
+}
+
+.welcome h2 {
+
+  color: #73dfff;
+
+  font-size: 28px;
+
+}
+
+#clock {
+
+  color: #8bb8d0;
+
+}
+
+.chat {
+
+  height: 42vh;
+
+  min-height: 260px;
+
+  overflow-y: auto;
+
+  background: #071522;
+
+  border: 1px solid #17618b;
+
+  border-radius: 16px;
+
+  padding: 14px;
+
+}
+
+.message {
+
+  padding: 12px;
+
+  margin: 10px 0;
+
+  border-radius: 12px;
+
+  line-height: 1.5;
+
+  overflow-wrap: anywhere;
+
+}
+
+.user {
+
+  background: #123e5d;
+
+  margin-left: 25px;
+
+}
+
+.assistant {
+
+  background: #102638;
+
+  border: 1px solid #17618b;
+
+  margin-right: 25px;
+
+}
+
+.controls {
+
+  display: flex;
+
+  gap: 8px;
+
+  margin-top: 14px;
+
+}
+
+input {
+
+  flex: 1;
+
+  min-width: 0;
+
+  padding: 14px;
+
+  border-radius: 10px;
+
+  border: 1px solid #2589b9;
+
+  background: #091827;
+
+  color: white;
+
+  font-size: 16px;
+
+}
+
+button {
+
+  background: #105078;
+
+  color: white;
+
+  border: 1px solid #38bfff;
+
+  padding: 13px;
+
+  border-radius: 10px;
+
+  cursor: pointer;
+
+}
+
+.send {
+
+  background: #0875a8;
+
+}
+
+.actions {
+
+  display: grid;
+
+  grid-template-columns: 1fr 1fr;
+
+  gap: 10px;
+
+  margin-top: 14px;
+
+}
+
+.actions button {
+
+  padding: 15px 5px;
+
+}
+
+.footer {
+
+  text-align: center;
+
+  padding: 25px;
+
+  color: #668ca5;
+
+  font-size: 12px;
+
+}
 
 </style>
 
@@ -120,178 +254,230 @@ footer{text-align:center;color:#61788d;font-size:11px;padding:12px}
 
 <body>
 
-<header>T I A</header>
+<header>
+
+  <div class="logo">T</div>
+
+  <h1>TIA</h1>
+
+  <div class="status">● SYSTEM ONLINE</div>
+
+  <p>PERSONAL AI ASSISTANT</p>
+
+</header>
 
 <main>
 
- <div class="orb">TIA</div>
+<section class="welcome">
 
- <div id="status">SYSTEM BEREIT</div>
+  <h2>Guten Abend, Lucas</h2>
 
- <section id="chat">
+  <p>Alle Systeme laufen. TIA ist bereit.</p>
 
-  <div class="message assistant">Hallo Lucas. Wie kann ich helfen?</div>
+  <div id="clock"></div>
 
- </section>
+</section>
 
- <div class="controls">
+<section class="chat" id="chat">
 
-  <input id="prompt" placeholder="Nachricht an TIA..." autocomplete="off">
+  <div class="message assistant">
 
-  <button onclick="sendMessage()">➤</button>
+    Guten Abend, Lucas.
 
-  <button onclick="listen()">🎙️</button>
+    TIA ist bereit.
 
- </div>
+    Was ist dein nächster Auftrag?
+
+  </div>
+
+</section>
+
+<div class="controls">
+
+  <input id="input"
+
+    placeholder="Nachricht an TIA..."
+
+    autocomplete="off">
+
+  <button class="send" onclick="sendMessage()">➤</button>
+
+</div>
+
+<div class="actions">
+
+  <button onclick="openChatGPT()">KI öffnen</button>
+
+  <button onclick="startVoice()">🎤 Sprache</button>
+
+  <button onclick="showTime()">Uhrzeit</button>
+
+  <button onclick="clearChat()">Chat löschen</button>
+
+</div>
 
 </main>
 
-<footer>TIA • Persönlicher Assistent • Erste Prototyp-Version</footer>
+<div class="footer">
+
+  TIA PERSONAL ASSISTANT · VERSION 2.0
+
+</div>
 
 <script>
 
-const chat=document.getElementById("chat");
+const input = document.getElementById("input");
 
-const input=document.getElementById("prompt");
+const chat = document.getElementById("chat");
 
-const statusText=document.getElementById("status");
+function updateClock() {
 
-function addMessage(text,type){
+  document.getElementById("clock").textContent =
 
- const div=document.createElement("div");
-
- div.className="message "+type;
-
- div.textContent=text;
-
- chat.appendChild(div);
-
- chat.scrollTop=chat.scrollHeight;
+    new Date().toLocaleString("de-DE");
 
 }
 
-function sendMessage(){
- const text=input.value.trim();
+updateClock();
 
- if(!text)return;
+setInterval(updateClock, 1000);
 
- addMessage(text,"user");
+function addMessage(text, type) {
 
- input.value="";
+  const message = document.createElement("div");
 
- // ChatGPT öffnen
+  message.className = "message " + type;
 
- window.location.href = "https://chatgpt.com/";
+  message.textContent = text;
 
- // Frage kopieren
+  chat.appendChild(message);
 
- try{
-
-  await navigator.clipboard.writeText(text);
-
-  addMessage("Deine Frage wurde kopiert. Füge sie jetzt bei ChatGPT ein.","assistant");
-
- }catch(error){
-
-  addMessage("ChatGPT wurde geöffnet. Bitte kopiere deine Frage manuell.","assistant");
-
- }
-
-}
- const text=input.value.trim();
-
- if(!text)return;
-
- addMessage(text,"user");
-
- input.value="";
-
- statusText.textContent="TIA VERARBEITET";
-
- setTimeout(()=>{
-
-  let answer="Die KI-Verbindung ist noch nicht eingerichtet. Das erledigen wir als nächsten Schritt.";
-
-  const lower=text.toLowerCase();
-
-  if(lower.includes("hey tia")) answer="Wie kann ich helfen?";
-
-  else if(lower.includes("hallo")||lower.includes("hi"))
-
-   answer="Hallo Lucas. Wie kann ich helfen?";
-
-  else if(lower.includes("wer bist"))
-
-   answer="Ich bin TIA, dein persönlicher digitaler Assistent.";
-
-  else if(lower.includes("dein name"))
-
-   answer="Mein Name ist TIA.";
-
-  addMessage(answer,"assistant");
-
-  statusText.textContent="SYSTEM BEREIT";
-
- },500);
+  chat.scrollTop = chat.scrollHeight;
 
 }
 
-input.addEventListener("keydown",e=>{
+function sendMessage() {
 
- if(e.key==="Enter")sendMessage();
+  const text = input.value.trim();
+
+  if (!text) return;
+
+  addMessage(text, "user");
+
+  input.value = "";
+
+  addMessage(
+
+    "Deine Nachricht ist bereit. Über die folgende Schaltfläche kannst du sie an ChatGPT übergeben.",
+
+    "assistant"
+
+  );
+
+  const button = document.createElement("button");
+
+  button.textContent = "Frage an ChatGPT übergeben";
+
+  button.onclick = async function() {
+
+    try {
+
+      await navigator.clipboard.writeText(text);
+
+      alert("Frage kopiert. Füge sie bei ChatGPT ein.");
+
+    } catch (error) {
+
+      alert("Bitte kopiere deine Frage manuell.");
+
+    }
+
+    window.open("https://chatgpt.com/", "_blank");
+
+  };
+
+  chat.appendChild(button);
+
+  chat.scrollTop = chat.scrollHeight;
+
+}
+
+function openChatGPT() {
+
+  window.open("https://chatgpt.com/", "_blank");
+
+}
+
+function showTime() {
+
+  addMessage(
+
+    "Die aktuelle Uhrzeit ist " +
+
+    new Date().toLocaleTimeString("de-DE"),
+
+    "assistant"
+
+  );
+
+}
+
+function clearChat() {
+
+  if (confirm("Chat wirklich löschen?")) {
+
+    chat.innerHTML = "";
+
+    addMessage("TIA ist bereit. Was ist dein Auftrag?", "assistant");
+
+  }
+
+}
+
+function startVoice() {
+
+  const Recognition =
+
+    window.SpeechRecognition ||
+
+    window.webkitSpeechRecognition;
+
+  if (!Recognition) {
+
+    addMessage(
+
+      "Spracheingabe wird in diesem Browser nicht unterstützt.",
+
+      "assistant"
+
+    );
+
+    return;
+
+  }
+
+  const recognition = new Recognition();
+
+  recognition.lang = "de-DE";
+
+  recognition.onresult = function(event) {
+
+    input.value = event.results[0][0].transcript;
+
+  };
+
+  recognition.start();
+
+}
+
+input.addEventListener("keydown", function(event) {
+
+  if (event.key === "Enter") sendMessage();
 
 });
 
-function listen(){
-
- const SpeechRecognition=window.SpeechRecognition||window.webkitSpeechRecognition;
-
- if(!SpeechRecognition){
-
-  addMessage("Spracheingabe wird in diesem Browser nicht unterstützt. Du kannst die Diktierfunktion deiner iPhone-Tastatur verwenden.","assistant");
-
-  return;
-
- }
-
- const recognition=new SpeechRecognition();
-
- recognition.lang="de-DE";
-
- recognition.interimResults=false;
-
- statusText.textContent="ICH HÖRE ZU";
-
- recognition.onresult=e=>{
-
-  input.value=e.results[0][0].transcript;
-
-  statusText.textContent="SPRACHE ERKANNT";
-
- };
-
- recognition.onerror=()=>{
-
-  statusText.textContent="SPRACHEINGABE NICHT VERFÜGBAR";
-
- };
-
- recognition.onend=()=>{
-
-  if(statusText.textContent==="ICH HÖRE ZU")
-
-   statusText.textContent="SYSTEM BEREIT";
-
- };
-
- recognition.start();
-
-}
-
 </script>
- <button onclick="window.open('https://chatgpt.com','_blank')">
- Mit ChatGPT verbinden
-</button>
+
 </body>
 
 </html>

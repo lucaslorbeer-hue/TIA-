@@ -171,7 +171,33 @@ function addMessage(text,type){
 }
 
 function sendMessage(){
+ const text=input.value.trim();
 
+ if(!text)return;
+
+ addMessage(text,"user");
+
+ input.value="";
+
+ // ChatGPT öffnen
+
+ window.open("https://chatgpt.com/","_blank");
+
+ // Frage kopieren
+
+ try{
+
+  await navigator.clipboard.writeText(text);
+
+  addMessage("Deine Frage wurde kopiert. Füge sie jetzt bei ChatGPT ein.","assistant");
+
+ }catch(error){
+
+  addMessage("ChatGPT wurde geöffnet. Bitte kopiere deine Frage manuell.","assistant");
+
+ }
+
+}
  const text=input.value.trim();
 
  if(!text)return;

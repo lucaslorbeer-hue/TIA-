@@ -1,0 +1,269 @@
+
+
+<!DOCTYPE html>
+
+<html lang="de">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<meta name="theme-color" content="#070b13">
+
+<title>TIA – Persönlicher KI-Assistent</title>
+
+<style>
+
+*{box-sizing:border-box}
+
+body{
+
+ margin:0;background:#070b13;color:#eaf4ff;
+
+ font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+
+ min-height:100vh;display:flex;flex-direction:column;
+
+}
+
+header{
+
+ padding:20px;text-align:center;border-bottom:1px solid #1c3854;
+
+ letter-spacing:5px;color:#9bdcff;font-size:23px;
+
+}
+
+main{flex:1;display:flex;flex-direction:column;align-items:center;padding:25px 16px}
+
+.orb{
+
+ width:155px;height:155px;border-radius:50%;margin:30px auto;
+
+ border:2px solid #55bfff;
+
+ box-shadow:0 0 25px #168bdb, inset 0 0 25px #168bdb;
+
+ display:flex;align-items:center;justify-content:center;
+
+ color:#bceaff;font-size:32px;letter-spacing:4px;
+
+ animation:pulse 3s infinite ease-in-out;
+
+}
+
+@keyframes pulse{
+
+ 50%{box-shadow:0 0 45px #168bdb,inset 0 0 35px #168bdb;transform:scale(1.04)}
+
+}
+
+#status{color:#78bde8;font-size:13px;letter-spacing:2px}
+
+#chat{
+
+ width:100%;max-width:650px;flex:1;min-height:180px;
+
+ margin-top:25px;display:flex;flex-direction:column;gap:12px;
+
+}
+
+.message{
+
+ padding:13px 15px;border:1px solid #244766;
+
+ border-radius:12px;background:#0d1928;line-height:1.5;
+
+ overflow-wrap:anywhere;
+
+}
+
+.user{align-self:flex-end;background:#102b43}
+
+.assistant{align-self:flex-start}
+
+.controls{
+
+ width:100%;max-width:650px;display:flex;gap:8px;
+
+ padding:14px 0 25px;
+
+}
+
+input{
+
+ flex:1;min-width:0;background:#101c2b;color:white;
+
+ border:1px solid #315575;border-radius:12px;padding:14px;
+
+ font-size:16px;outline:none;
+
+}
+
+button{
+
+ background:#123b5b;color:#dff5ff;border:1px solid #398bc0;
+
+ border-radius:12px;padding:12px 15px;font-size:16px;
+
+}
+
+button:active{background:#1c608b}
+
+footer{text-align:center;color:#61788d;font-size:11px;padding:12px}
+
+</style>
+
+</head>
+
+<body>
+
+<header>T I A</header>
+
+<main>
+
+ <div class="orb">TIA</div>
+
+ <div id="status">SYSTEM BEREIT</div>
+
+ <section id="chat">
+
+  <div class="message assistant">Hallo Lucas. Wie kann ich helfen?</div>
+
+ </section>
+
+ <div class="controls">
+
+  <input id="prompt" placeholder="Nachricht an TIA..." autocomplete="off">
+
+  <button onclick="sendMessage()">➤</button>
+
+  <button onclick="listen()">🎙️</button>
+
+ </div>
+
+</main>
+
+<footer>TIA • Persönlicher Assistent • Erste Prototyp-Version</footer>
+
+<script>
+
+const chat=document.getElementById("chat");
+
+const input=document.getElementById("prompt");
+
+const statusText=document.getElementById("status");
+
+function addMessage(text,type){
+
+ const div=document.createElement("div");
+
+ div.className="message "+type;
+
+ div.textContent=text;
+
+ chat.appendChild(div);
+
+ chat.scrollTop=chat.scrollHeight;
+
+}
+
+function sendMessage(){
+
+ const text=input.value.trim();
+
+ if(!text)return;
+
+ addMessage(text,"user");
+
+ input.value="";
+
+ statusText.textContent="TIA VERARBEITET";
+
+ setTimeout(()=>{
+
+  let answer="Die KI-Verbindung ist noch nicht eingerichtet. Das erledigen wir als nächsten Schritt.";
+
+  const lower=text.toLowerCase();
+
+  if(lower.includes("hey tia")) answer="Wie kann ich helfen?";
+
+  else if(lower.includes("hallo")||lower.includes("hi"))
+
+   answer="Hallo Lucas. Wie kann ich helfen?";
+
+  else if(lower.includes("wer bist"))
+
+   answer="Ich bin TIA, dein persönlicher digitaler Assistent.";
+
+  else if(lower.includes("dein name"))
+
+   answer="Mein Name ist TIA.";
+
+  addMessage(answer,"assistant");
+
+  statusText.textContent="SYSTEM BEREIT";
+
+ },500);
+
+}
+
+input.addEventListener("keydown",e=>{
+
+ if(e.key==="Enter")sendMessage();
+
+});
+
+function listen(){
+
+ const SpeechRecognition=window.SpeechRecognition||window.webkitSpeechRecognition;
+
+ if(!SpeechRecognition){
+
+  addMessage("Spracheingabe wird in diesem Browser nicht unterstützt. Du kannst die Diktierfunktion deiner iPhone-Tastatur verwenden.","assistant");
+
+  return;
+
+ }
+
+ const recognition=new SpeechRecognition();
+
+ recognition.lang="de-DE";
+
+ recognition.interimResults=false;
+
+ statusText.textContent="ICH HÖRE ZU";
+
+ recognition.onresult=e=>{
+
+  input.value=e.results[0][0].transcript;
+
+  statusText.textContent="SPRACHE ERKANNT";
+
+ };
+
+ recognition.onerror=()=>{
+
+  statusText.textContent="SPRACHEINGABE NICHT VERFÜGBAR";
+
+ };
+
+ recognition.onend=()=>{
+
+  if(statusText.textContent==="ICH HÖRE ZU")
+
+   statusText.textContent="SYSTEM BEREIT";
+
+ };
+
+ recognition.start();
+
+}
+
+</script>
+
+</body>
+
+</html>

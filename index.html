@@ -390,7 +390,10 @@ function addMessage(text, type) {
 
 }
 
+
+
 function sendMessage() {
+
   const input = document.getElementById("userInput");
 
   const text = input.value.trim();
@@ -403,43 +406,15 @@ function sendMessage() {
 
   addMessage(
 
-    "Deine Nachricht ist bereit. Über die folgende Schaltfläche kannst du sie an ChatGPT übergeben.",
+    "Hallo Lucas. Ich habe deine Nachricht erhalten. Meine echte KI-Verbindung ist noch nicht eingerichtet.",
 
     "assistant"
 
   );
 
-  const button = document.createElement("button");
-
-  button.textContent = "Frage an ChatGPT übergeben";
-
-  button.onclick = async function() {
-
-    try {
-
-      await navigator.clipboard.writeText(text);
-
-      alert("Frage kopiert. Füge sie bei ChatGPT ein.");
-
-    } catch (error) {
-
-      alert("Bitte kopiere deine Frage manuell.");
-
-    }
-
-    window.open("https://chatgpt.com/", "_blank");
-
-  };
-
-  chat.appendChild(button);
-
   chat.scrollTop = chat.scrollHeight;
 
 }
-
-function openChatGPT() {
-
-  window.open("https://chatgpt.com/", "_blank");
 
 }
 
